@@ -23,10 +23,10 @@ def checkHolidays():
         sys.exit(1)
     res = r.json()
     if not res['data'] == 0:
-        print('today is holiday, exit...')
+        print('today is a holiday, exit...')
         sys.exit(0)
     else:
-        print('today is work day, continue')
+        print('today is the working day, continue')
 
 def loadCreds():
     global username
@@ -108,7 +108,7 @@ def preparingProjects(projects):
         sys.exit(0)
 
 def setWorkhours(project, cred):
-    msg = "submit workhous for [{}]: {}h".format(project['ProjectName'], project['Hours'])
+    msg = "submit workhours for [{}]: {}h".format(project['ProjectName'], project['Hours'])
     print(msg)
     url = mobileBase + '/WorkHoursApi/SetWorkHour'
     data = {
