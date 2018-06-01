@@ -1,0 +1,22 @@
+[
+    {
+        "ProjectName": "万门教育信息化项目定制开发",
+        "InvoiceNum": "万门教育信息化项目定制开发",
+        "ProjectOwner": "林丹",
+        "TotalWorkHours": 752.0,
+        "EmployeeId": "ca6be5a1-9b4c-418d-af24-ce82126e7311",
+        "PurchaseOrderId": "70627ff0-adf2-40b5-93c1-8419c6861d1f",
+        "ProjectItemId": "e6dabde7-d353-4a02-980e-15cc91befe6c",
+        "Hours": 8
+    },
+    {
+        "ProjectName": "HPO-2018-002042 | [Beacon] [TKT-20180418012] Beacon手机功能调整和Account Owner功能开发",
+        "InvoiceNum": "HPO-2018-002042 | [Beacon] [TKT-20180418012] Beacon手机功能调整和Account Owner功能开发",
+        "ProjectOwner": "郭峰",
+        "TotalWorkHours": 24.0,
+        "EmployeeId": "ca6be5a1-9b4c-418d-af24-ce82126e7311",
+        "PurchaseOrderId": "7010c154-89cb-4f6d-9049-0e33fecd6909",
+        "ProjectItemId": "782e23cd-0c5a-415d-b3e0-7dcbb05fef4b",
+        "Hours": 0
+    }
+]
