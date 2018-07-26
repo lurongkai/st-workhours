@@ -6,13 +6,19 @@ import configparser
 import json
 import datetime
 
-confFile = './iwh.conf'
-projectsFile = './projects.json'
+base = dir_path = os.path.dirname(os.path.realpath(__file__))
+confFile = 'iwh.conf'
+confPath = os.path.join(base, confFile)
+projectsFile = 'projects.json'
+projectsPath = os.path.join(base, projectsFile)
 mobileBase = 'http://123.56.176.64:88'
 
 username = ''
 password = ''
 dailyHours = 8
+
+print('conf path: ' + confPath)
+print('projects path: ' + projectsPath)
 
 def checkHolidays():
     now = datetime.datetime.now()
@@ -33,10 +39,10 @@ def loadCreds():
     global password
     global dailyHours
 
-    if not os.path.exists(confFile):
+    if not os.path.exists(confPath):
         return
     config = configparser.ConfigParser()
-    config.read(confFile)
+    config.read(confPath)
 
     if 'cred' not in config:
         print('[cred] section missing')
@@ -62,8 +68,8 @@ def getToken():
 
 def loadProjects(cred):
     projects = []
-    if os.path.exists(projectsFile):
-        with open(projectsFile) as f:
+    if os.path.exists(projectsPath):
+        with open(projectsPath) as f:
             projects = json.load(f)
         return projects
     projects = getProjects(cred)
@@ -99,7 +105,7 @@ def preparingProjects(projects):
         print('no projects found, exit...')
         sys.exit(0)
 
-    with open(projectsFile, 'w') as f:
+    with open(projectsPath, 'w') as f:
         json.dump(projects, f, ensure_ascii=False, indent=4)
     if len(projects) > 1:
         print('found multiple projects.')

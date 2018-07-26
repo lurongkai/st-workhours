@@ -39,6 +39,11 @@ python iwh.conf
 该程序可以自动检测当前日期是否为工作日，所以，如果有一台24小时运行的linux，或者路由器，或者...等，就可以使用`crontab`来自动化运行了，比如:
 
 ```
+PYTHONIOENCODING=UTF-8
+LANG=zh_CN.UTF-8
+LC_ALL=zh_CN.UTF-8
 # execute iwh on 9am, every day
 0 9 * * * python path-to-iwh.py
 ```
+
+别忘了添加前三行，很重要。

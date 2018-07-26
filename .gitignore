@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 .vscode
 iwh.conf
+projects.json
