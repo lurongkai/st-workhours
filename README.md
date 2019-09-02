@@ -26,7 +26,7 @@ cp iwh.conf.example iwh.conf
 运行以下命令:
 
 ```python
-python iwh.conf
+python iwh.py
 ```
 
 首次执行，将生成`projects.json`文件：
