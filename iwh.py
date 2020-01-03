@@ -5,6 +5,7 @@ import os.path
 import configparser
 import json
 import datetime
+from chinese_calendar import is_workday
 
 base = dir_path = os.path.dirname(os.path.realpath(__file__))
 confFile = 'iwh.conf'
@@ -21,18 +22,10 @@ print('conf path: ' + confPath)
 print('projects path: ' + projectsPath)
 
 def checkHolidays():
-    now = datetime.datetime.now()
-    nowStr = now.strftime('%Y%m%d')
-    r = requests.get(url='http://api.goseek.cn/Tools/holiday', params={'date': nowStr})
-    if not r.status_code == 200:
-        print('holiday api error')
-        sys.exit(1)
-    res = r.json()
-    if not res['data'] == 0:
+    now = datetime.datetime.now().date()
+    if is_workday(now) == False:
         print('today is a holiday, exit...')
         sys.exit(0)
-    else:
-        print('today is the working day, continue')
 
 def loadCreds():
     global username
