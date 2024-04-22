@@ -88,10 +88,10 @@ def init_projects(config: dict):
         # 'project_end_date':   p['ProjectEndDate'],
         # 'current_hours':      p['CurrentHours'],
 
-        'employee_id'        : p['EmployeeId'],
-        'purchase_order_id'   : p['PurchaseOrderId'],
-        'project_item_id'     : p['ProjectItemId'],
-        'hours'             : dailyHours,
+        'employee_id'           : p['EmployeeId'],
+        'purchase_order_id'     : p['PurchaseOrderId'],
+        'project_item_id'       : p['ProjectItemId'],
+        'hours'                 : config['daily_hours'],
     } for p in res]
 
     with open(proj_path, 'w') as f:
@@ -106,36 +106,6 @@ def load_projects():
         projects = json.load(f)
 
     return projects
-
-def preparingProjects(projects):
-    projects = map(lambda p: {
-        'ProjectName'       : p['ProjectName'],
-        'InvoiceNum'        : p['InvoiceNum'],
-        'ProjectOwner'      : p['ProjectOwner'],
-        'TotalWorkHours'    : p['TotalWorkHours'],
-
-        # 'ProjectStartDate': p['ProjectStartDate'],
-        # 'ProjectEndDate': p['ProjectEndDate'],
-        # 'CurrentHours': p['CurrentHours'],
-
-        'EmployeeId'        : p['EmployeeId'],
-        'PurchaseOrderId'   : p['PurchaseOrderId'],
-        'ProjectItemId'     : p['ProjectItemId'],
-        'Hours'             : dailyHours
-    }, projects)
-    projects = list(projects)
-
-    if len(projects) == 0:
-        print('no projects found, exit...')
-        sys.exit(0)
-
-    with open(projectsPath, 'w') as f:
-        json.dump(projects, f, ensure_ascii=False, indent=4)
-    if len(projects) > 1:
-        print('found multiple projects.')
-        print('please manually adjust workhours for each projects in setting file: projects.json')
-        print('exit...')
-        sys.exit(0)
 
 def submit_workhours(config:dict, creds:dict, project:dict):
     logging.info('submit workhours for project: %s', project['project_name'])
@@ -195,12 +165,3 @@ if __name__ == '__main__':
     else:
         logging.fatal('invalid command')
         sys.exit(1)
-
-    # is_holidays()
-    # loadCreds()
-    # cred = getToken()
-    # projects = loadProjects(cred)
-    # for project in projects:
-    #     if project['Hours'] == 0:
-    #         continue
-    #     setWorkhours(project, cred)
