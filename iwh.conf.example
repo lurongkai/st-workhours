@@ -1,6 +1,9 @@
 [cred]
-username=
-password=
+username =
+password =
 
-[iwh]
-dailyHours=8
+# [iwh]
+# daily_hours = 8
+
+# [api]
+# base = https://beacon.shinetechchina.com.cn
